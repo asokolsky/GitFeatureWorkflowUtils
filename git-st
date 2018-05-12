@@ -1,0 +1,56 @@
+#!/bin/bash
+#
+# Usage: git-st <branch>
+#
+# Start <branch> development
+#
+
+remote="origin"
+branch=$1
+
+if [ -z $branch ]; then
+  echo "Usage: $0 [branchname]"
+  exit 1
+fi
+
+# update local master
+git checkout master
+git fetch $remote 
+git reset --hard $remote/master
+
+#
+local_branch_exists=$(git branch --no-color | egrep " $branch\$")
+remote_branch_exists=$(git branch -r --no-color | egrep " $remote/$branch\$")
+remotes=( $(git remote) )
+remotes_with_branch=()
+origin_has_branch=
+
+# If local exists already, switch to it
+if [ -n "$local_branch_exists" ] && [ ! "$local_branch_exists" == '' ]; then
+  echo "Switching to existing local branch..."
+  git checkout $branch
+
+  # Track remote branch if not already
+  if [ -n "$remote_branch_exists" ] && [ ! "$remote_branch_exists" == '' ]; then
+    tracking=$(git branch -vv | grep "*" | awk '{ print $4 '})
+    echo "Remote branch exists. Local branch is tracking: $tracking"
+    if [[ ! "$tracking" =~ "$remote" ]]; then
+      echo "Your local branch is not tracking the corresponding remote branch, fixing..."
+      git branch --set-upstream-to $branch $remote/$branch
+    fi
+  # else
+  #   echo "Remote branch does not exist, not doing anything"
+  fi
+
+# If remote exists, create a local branch that tracks the remote
+elif [ -n "$remote_branch_exists" ] && [ ! "$remote_branch_exists" == '' ]; then
+  echo "Tracking existing remote branch '$remote_branch_exists'..."
+  git checkout -b $branch --track $remote/$branch
+
+# Otherwise create a new local branch
+else
+  echo "Creating new local branch..."
+  git checkout -b $branch
+fi
+
+exit 0
