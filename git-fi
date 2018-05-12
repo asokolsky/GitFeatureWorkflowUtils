@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Usage: git-fi
+#
+# Finish development of the <branch>
+#
+remote="origin"
+ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
+branch="${ref#refs/heads/}"
+
+git push -u $remote $branch
+

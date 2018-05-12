@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Usage: git-co
+#
+# Commits changes to the branch
+#
+
+ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
+branch="${ref#refs/heads/}"
+
+git commit -m $branch
+exit 0

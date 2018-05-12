@@ -1,5 +1,6 @@
-# GitFeatureWorkflowUtils
-Schell scripts supporting "Feature Branch Workflow"
+# Git Feature Branch Workflow Utils
+Schell scripts supporting "Feature Branch Workflow" described here:
+https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 
 ## Manual Installation
 Copy the cripts into your 

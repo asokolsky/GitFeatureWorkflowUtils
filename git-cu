@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Usage: git-cu
+#
+# Catches up with the changes done (remotely) to the trunk..
+# .. and merges those changes into the branch
+#
+remote="origin"
+ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
+branch="${ref#refs/heads/}"
+
+git checkout master
+git pull $remote master
+git checkout $branch
+git rebase master
+exit 0
