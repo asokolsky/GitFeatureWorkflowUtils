@@ -1,0 +1,17 @@
+#!/bin/bash
+#
+# Usage: git-co <branch>
+#
+# Commits changes to the branch
+#
+
+remote="origin"
+branch=$1
+
+if [ -z $branch ]; then
+  echo "Usage: $0 [branchname]"
+  exit 1
+fi
+
+git commit -m $branch
+exit 0
