@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Usage: git-cu <branch>
+#
+# Catches up with the changes done (remotely) to the trunk..
+# .. and merges those changes into the branch
+#
+
+ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
+branch="${ref#refs/heads/}"

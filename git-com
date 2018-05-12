@@ -16,5 +16,5 @@ branch="${ref#refs/heads/}"
 #  exit 1
 #fi
 
-echo "git commit -m $branch"
+git commit -m $branch
 exit 0
