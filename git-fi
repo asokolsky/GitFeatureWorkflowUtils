@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-# Usage: git-co
+# Usage: git-fi
 #
-# Commits changes to the branch
+# Finish development of the <branch>
 #
-
+remote="origin"
 ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
 branch="${ref#refs/heads/}"
 
-git commit -m $branch
-exit 0
+git push -u $remote $branch
+
