@@ -4,7 +4,7 @@ Schell scripts supporting "Feature Branch Workflow" described here:
 https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
 
 ## Manual Installation
-Copy the cripts into your 
+Copy the scripts into your 
 ~/bin
 ```
 chmod a+x
