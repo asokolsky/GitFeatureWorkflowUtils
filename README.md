@@ -52,6 +52,6 @@ This will push your development branch to the server so that you can generate a 
 git-done
 ```
 
-Once your pull request is approved and merged, you can deete a lcoal copy of the current branch.
+Once your pull request is approved and merged, you can delete a local copy of the branch.
 
 
