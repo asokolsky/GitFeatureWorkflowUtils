@@ -8,9 +8,11 @@
 remote="origin"
 ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
 branch="${ref#refs/heads/}"
+parent="master"
+#parent="dev"
 
-git checkout master
-git pull $remote master
+git checkout $parent
+git pull $remote $parent
 git checkout $branch
-git rebase master
+git rebase $parent
 exit 0
