@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Usage: git-merge
+#
+# Alternative to pull request.
+# Just merge the branch back into the parent
+#
+remote="origin"
+ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
+branch="${ref#refs/heads/}"
+parent="master"
+
+git checkout $parent
+git merge $branch
+git push -u $remote $parent
+exit 0
