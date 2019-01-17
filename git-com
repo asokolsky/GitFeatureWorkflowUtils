@@ -7,6 +7,7 @@
 
 ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
 branch="${ref#refs/heads/}"
+#branch=$(git rev-parse --abbrev-ref HEAD)
 
 git commit -m $branch
 exit 0
