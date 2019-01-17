@@ -47,6 +47,11 @@ git-fi
 
 This will push your development branch to the server so that you can generate a pull request.
 
+### Alternatve to Pull Request - Merge
+```
+git-merge
+```
+
 ### Done with Development
 ```
 git-done
