@@ -38,7 +38,7 @@ The latter will commit the changes to the current branch with a message=branch
 git-cu
 ```
 
-This will checkout master, pull from origin.  Then checkout back to the branch and do rebase.
+This will checkout master, pull from origin.  Then checkout back to the branch and do merge.
 
 ### Finish Development
 ```
