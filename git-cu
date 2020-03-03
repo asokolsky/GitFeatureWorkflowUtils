@@ -1,18 +1,24 @@
 #!/bin/bash
 #
-# Usage: git-cu
+# Usage: git-cu [<parent>]
 #
 # Catches up with the changes done (remotely) to the trunk..
 # .. and merges those changes into the branch
 #
 remote="origin"
+parent=$1
+if [ -z $parent ]; then
+# parent="master"
+  parent="dev"
+fi
+
 ref=$(git symbolic-ref HEAD 2> /dev/null) || exit 0
 branch="${ref#refs/heads/}"
-parent="master"
-#parent="dev"
 
 git checkout $parent
 git pull $remote $parent
 git checkout $branch
-git rebase $parent
-exit 0
+git merge $parent
+# resolve conflicts here
+# git commit -m "merge conflicts resolved"
+# git push
